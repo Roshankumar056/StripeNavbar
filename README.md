@@ -18,14 +18,41 @@ This project is a **React-based replica of the Stripe website navbar**, featurin
 
 ---
 
+## Installation
 
+1. Clone the repository or move the files into a designated folder:
+
+```bash
+git clone <repository-url>
+cd stripe-navbar
+```
+
+2. Install the necessary dependencies:
+
+```bash
+npm install
+```
+
+3. Launch the development server:
+
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to:
+
+```
+http://localhost:5173
+```
+
+---
 
 ## File Structure
 
 ```
 stripe-navbar/
 ├─ public/
-│  └─ StripeLogo.jpg
+│  └─ logo.png
 ├─ src/
 │  ├─ components/
 │  │  └─ Navbar/
@@ -47,28 +74,6 @@ stripe-navbar/
 
 ---
 
+## Icons
 
-**🛠 Tech Stack**
-- **Frontend:** React, CSS / Tailwind
-
-
-**🚀 Getting Started**
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/cross-gen-app.git
-   cd cross-gen-app
-   ```
-2. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
-
-
-
-
-
-- ✅ Search and filtering
-- 💬 Comment section
-- 📊 Contribution leaderboard
-- 🌍 Multi-language support
-- 🎖️ Badges for top contributors
+* For icons, consider using libraries like Font Awesome or Material Icons to enhance your navbar visuals.
