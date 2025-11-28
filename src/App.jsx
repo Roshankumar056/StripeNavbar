@@ -1,11 +1,14 @@
-import React from "react";
-import { Navbar } from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
+
+; // <- use the actual file
+
 
 function App() {
   return (
-    <>
-      <Navbar />
-    </>
+    <div>
+      <Navbar/>
+      {/* Other components */}
+    </div>
   );
 }
 

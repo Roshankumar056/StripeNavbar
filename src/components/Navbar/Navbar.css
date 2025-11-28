@@ -1,4 +1,4 @@
-@keyframes slideDown {
+/* @keyframes slideDown {
   from {
     opacity: 0;
     transform: translateY(5px);
@@ -37,4 +37,5 @@
   100% {
     background-position: 0% 50%;
   }
-}
+} */
+

@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react";
+import { ChevronRight, ArrowRight, ChevronLeft } from "lucide-react";
+
 import {
   Building2,
   Rocket,
@@ -103,122 +105,148 @@ export default function Navbar() {
   const handleMouseLeave = () => {
     closeTimeout.current = setTimeout(() => {
       setOpen(false);
-    }, 200); // Delay of 200ms before closing
+    }, 200);
   };
 
   return (
-    <nav className="w-full flex items-center justify-between px-8 py-4 animated-gradient bg-white relative z-50">
-      {/* <nav className="w-full flex items-center justify-between py-4 px-8 bg-gradient-to-r from-[#ff8a00] via-[#f83f74] to-[#246bff] saturate-150 brightness-110 relative z-50"> */}
+<nav className="w-full flex items-center justify-between px-8 py-4 animated-gradient bg-white relative z-50">
 
-      {/* Logo */}
-      <div className="text-xl text-white font-semibold">Stripe</div>
 
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex items-center gap-8 text-[15px] font-medium relative">
-        <li className="cursor-pointer hover:text-gray-300 text-white">
-          Products
-          
+  {/* LOGO */}
+      {/* <div className="text-xl text-white hover:text-gray-300 font-semibold">Stripe</div> */}
+{/* LOGO */}
+<div className="text-xl text-white font-bold text-[24px] mr-4 md:ml-50 ml-0 mb-1">
+  Stripe
+</div>
+
+
+
+      {/* DESKTOP MENU */}
+      {/* <ul className="hidden md:flex items-center gap-6 text-[15px] font-medium relative"> */}
+      <ul className="hidden md:flex items-center gap-6 text-[15px] font-medium relative flex-1 mr-60   justify-center">
+
+
+        <li className="cursor-pointer hover:text-gray-300 text-white flex items-center gap-1">
+          Products <ChevronDown size={15} />
         </li>
 
-        {/* Solutions */}
+        {/* SOLUTIONS MENU */}
         <li
           className="cursor-pointer hover:text-gray-300 text-white relative flex items-center gap-1"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          tabIndex={0}
         >
           Solutions
           <ChevronDown
-            size={16}
-            className={`transition-transform duration-300 ${
-              open ? "rotate-180" : "rotate-0"
-            }`}
+            size={15}
+            className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`}
           />
-          {/* Mega Menu */}
+
+          {/* MEGA MENU */}
           <div
-            className={`absolute left-0 top-8 w-[600px] bg-white shadow-xl rounded-lg p-6 grid grid-cols-2 gap-6
-              transition-all duration-300 ease-in-out
-              transform origin-top
-              ${
-                open
-                  ? "opacity-100 scale-100 pointer-events-auto"
-                  : "opacity-0 scale-95 pointer-events-none"
-              }
-            `}
+            className={`absolute left-0 top-8 w-[720px] bg-white shadow-xl rounded-xl p-6 
+            transition-all duration-300 ease-in-out transform origin-top 
+            ${open ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            {solutionsSections.map((section) => (
-              <div key={section.title}>
-                <h3 className="font-semibold text-gray-800 mb-3">
-                  {section.title}
-                </h3>
-                <ul className="space-y-2">
+            {solutionsSections.map((section, i) => (
+              <div
+                key={section.title}
+                className={`pb-6 ${i !== solutionsSections.length - 1 ? "border-b border-gray-200" : ""}`}
+              >
+                <br />
+                <h3 className="text-xs font-semibold text-black mb-4">{section.title}</h3>
+                <div className="grid grid-cols-2 gap-y-4 gap-x-10 hover:text-black">
                   {section.items.map((item) => {
                     const Icon = iconMap[item.icon];
                     return (
-                      <li
+                  
+                      <div
                         key={item.label}
-                        className="flex items-center gap-2 text-gray-600 hover:text-black cursor-pointer transition-colors duration-200"
+                        className="flex items-center gap-2 text-gray-700 cursor-pointer group"
                       >
-                        {Icon && <Icon size={16} />}
-                        <span className="text-[14px]">{item.label}</span>
-                      </li>
+                        
+                        {Icon && (
+                          <Icon
+                            size={18}
+                            className="text-gray-600 transition-colors duration-200 group-hover:text-black"
+                          />
+                        )}
+                        <span className="text-[15px] transition-colors duration-200 group-hover:text-black">
+                          {item.label}
+                          
+                        </span>
+                        
+
+                        
+                      </div>
+                      
                     );
                   })}
-                </ul>
+                </div>
               </div>
             ))}
           </div>
         </li>
 
-        <li className="cursor-pointer hover:text-gray-300 text-white">
-          Developers
+        <li className="cursor-pointer hover:text-gray-300 text-white flex items-center gap-1">
+          Developers <ChevronDown size={15} />
         </li>
-        <li className="cursor-pointer hover:text-gray-300 text-white">
-          Resources
+        <li className="cursor-pointer hover:text-gray-300 text-white flex items-center gap-1">
+          Resources <ChevronDown size={15} />
         </li>
-        <li className="cursor-pointer hover:text-gray-300 text-white">
-          Pricing
+        <li className="cursor-pointer hover:text-gray-300 text-white flex items-center gap-1">
+          Pricing <ChevronDown size={15} />
         </li>
       </ul>
 
-      {/* Desktop Buttons */}
-      <div className="hidden md:flex items-center gap-4">
-        <button className="text-white text-[15px] hover:text-black">
-          Sign in
+      {/* DESKTOP BUTTONS */}
+      <div className="hidden md:flex items-center gap-4 ml-auto">
+        <button className="cursor-pointer font-semibold text-white flex items-center gap-1">
+          <span className="text-white hover:text-gray-300 icon-switch flex items-center gap-2">
+            Sign in
+            <ChevronRight size={15} className="icon-default" />
+            <ArrowRight size={15} className="icon-hover" />
+          </span>
         </button>
-        <button className="bg-white text-orange-500 px-4 py-2 rounded-full text-[15px] hover:bg-black/80">
-          Contact sales
+
+        <button className="bg-white px-4 py-2 rounded-full font-semibold mr-50 text-[15px] text-blue-700 flex items-center gap-2">
+          <span className="flex items-center gap-2 text-5sec-color icon-switch">
+            Contact sales
+            <ChevronRight size={15} className="icon-default" />
+            <ArrowRight size={15} className="icon-hover" />
+          </span>
         </button>
       </div>
 
-      {/* Mobile Menu Icon */}
-      <div className="md:hidden">
-        <button onClick={() => setMobileMenuOpen(true)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-8 h-8"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
-      </div>
+      {/* MOBILE TOGGLE */}
+<div className="md:hidden ml-auto">
+  <button onClick={() => setMobileMenuOpen(true)}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-8 h-8 text-white"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+      />
+    </svg>
+  </button>
+</div>
 
-      {/* Mobile Fullscreen Menu */}
+
+      {/* MOBILE MENU */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col p-6 overflow-y-auto">
+        <div className="fixed inset-0 bg-white z-50 flex flex-col p-6">
+          {/* HEADER */}
           <div className="flex items-center justify-between mb-6">
-            <div className="text-xl text-blue-500 font-bold">Stripe</div>
-
+            <div className="text-xl  text-blue-500 font-bold">Stripe</div>
             <button onClick={() => setMobileMenuOpen(false)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -228,66 +256,94 @@ export default function Navbar() {
                 stroke="currentColor"
                 className="w-8 h-8"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <hr className="border-t-1 border-gray-300 border-dashed my-4" />
 
-          {!mobileSolutionsOpen ? (
-            <ul className="space-y-4 text-[16px] font-medium">
-              <li>Products</li>
-              <li
-                onClick={() => setMobileSolutionsOpen(true)}
-                className="flex justify-between items-center cursor-pointer"
-              >
-                Solutions <span>&gt;</span>
-              </li>
-              <li>Developers</li>
-              <li>Resources</li>
-              <li>Pricing</li>
-              <li className="mt-6">
-                <button className="w-full bg-white text-orange-500 px-4 py-2 rounded-full mb-2">
-                  Contact sales
-                </button>
-                <button className="w-full text-gray-700 px-4 py-2 rounded-full border border-gray-300">
-                  Sign in
-                </button>
-              </li>
-            </ul>
-          ) : (
-            <div>
-              <button
-                onClick={() => setMobileSolutionsOpen(false)}
-                className="mb-4 flex items-center gap-2 text-gray-700"
-              >
-                &lt; Back
-              </button>
-              {solutionsSections.map((section) => (
-                <div key={section.title} className="mb-4">
-                  <h3 className="font-semibold mb-2">{section.title}</h3>
-                  <ul className="space-y-2">
-                    {section.items.map((item) => {
-                      const Icon = iconMap[item.icon];
-                      return (
-                        <li
-                          key={item.label}
-                          className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors duration-200"
-                        >
-                          {Icon && <Icon size={16} />}
-                          {item.label}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
+          <hr className="border-t-1 border-gray-300 border-dashed mb-4" />
+
+          {/* SCROLLABLE MENU ITEMS */}
+          <div className="flex-1 overflow-y-auto">
+            {!mobileSolutionsOpen ? (
+              <ul className="space-y-4 text-[16px] font-medium">
+                <li className="text-[20px] text-gray-600 hover:text-black">Products</li>
+                <hr className="border-t-1 border-gray-300 border-dashed my-4" />
+                <li
+                  onClick={() => setMobileSolutionsOpen(true)}
+                  className="text-[20px] text-gray-600 hover:text-black flex justify-between items-center cursor-pointer"
+                >
+                  Solutions
+                  <ChevronRight size={20} className="icon-default" />
+                </li>
+                <hr className="border-t-1 border-gray-300 border-dashed my-4" />
+                <li className="text-[20px] text-gray-600 hover:text-black">Developers</li>
+                <hr className="border-t-1 border-gray-300 border-dashed my-4" />
+                <li className="text-[20px] text-gray-600 hover:text-black">Resources</li>
+                <hr className="border-t-1 border-gray-300 border-dashed my-4" />
+                <li className="text-[20px] text-gray-600 hover:text-black">Pricing</li>
+                <hr className="border-t-1 border-gray-300 border-dashed my-4" />
+              </ul>
+            ) : (
+              <div>
+               <button 
+  onClick={() => setMobileSolutionsOpen(false)} 
+  className="mb-4 flex items-center gap-2 text-blue-500 font-medium"
+>
+  <ChevronLeft size={15} className="icon-default text-blue-500" /> 
+  Back
+</button>
+
+
+                {solutionsSections.map((section) => (
+                  <div key={section.title} className="mb-4">
+                    <h4 className="font-semibold text-[13px] text-gray-800">{section.title}</h4>
+                    <ul className="mt-2 space-y-2">
+                      {section.items.map((item) => {
+                        const Icon = iconMap[item.icon];
+                        return (
+                          <li key={item.label} className="font-semibold text-[16px] flex items-center gap-2 text-black">
+                            {Icon && <Icon className="text-gray-500" size={18} />}
+                            {item.label}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                <hr className="border-t-4 border-gray-100  my-4" />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* BOTTOM BUTTONS */}
+    {/* BOTTOM BUTTONS */}
+<div className="mt-6 flex justify-center gap-4">
+    <button className="hover:bg-blue-950 bg-blue-600 text-white px-4 py-2 rounded-full font-semibold text-[14px] transition-all duration-300">
+      <span className="text-white  icon-switch flex items-center gap-2">
+    Start now
+
+    {/* Default icon */}
+    <ChevronRight size={15} className="icon-default" />
+
+    {/* Hover icon */}
+     <ArrowRight size={15} className="icon-hover" />
+   </span>
+    
+   </button>
+ <button className="bg-white px-4 py-2 rounded-full font-semibold text-[15px]">
+   <span className="text-blue-600 hover:text-gray-500 icon-switch flex items-center gap-2">
+    Contact sales
+
+   {/* Default icon */}
+    <ChevronRight size={15} className="icon-default" />
+
+    {/* Hover icon */}
+     <ArrowRight size={15} className="icon-hover" />
+   </span>
+ </button>
+</div>
+
         </div>
       )}
     </nav>

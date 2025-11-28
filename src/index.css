@@ -39,3 +39,70 @@
     background-position: 0% 50%;
   }
 }
+/* Color-changing animated text */
+.text-animated-3color {
+  animation: colorCycle 15s infinite; /* 3 colors × 5 sec each = 15 sec total */
+  font-weight: inherit;
+}
+/* Smooth color switching every 5 seconds */
+@keyframes colorSwitch {
+  0%   { color: #f43f5e; }   /* Orange */
+  33%  { color: #0a57d4; }   /* Blue */
+  66%  { color: #ff8a00; }   /* Red */
+  100% { color: #ff8a00; }   /* Back to Orange */
+}
+
+.text-5sec-color {
+  animation: colorSwitch 15s linear infinite;
+}
+
+.icon-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* default small arrow */
+.icon-switch .icon-default {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* hover long arrow */
+.icon-switch .icon-hover {
+  position: absolute;
+  right: -2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.icon-switch:hover .icon-default {
+  opacity: 0;
+}
+
+.icon-switch:hover .icon-hover {
+  opacity: 1;
+}
+
+
+.gradient-animate {
+  background-size: 300% 300%;
+  animation: gradientFlow 7s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+nav {
+  background-repeat: no-repeat;
+  background-size: cover !important;
+}
